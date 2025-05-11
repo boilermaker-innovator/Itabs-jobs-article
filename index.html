@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critical Skills Shortage in Mining - Workers Needed</title>
+    <style>
+        /* Base styles */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        
+        .article-container {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin: 20px 0 40px 0;
+        }
+        
+        .article-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+        }
+        
+        h1 {
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+        
+        .article-meta {
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .article-content {
+            padding: 30px;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        
+        h2 {
+            color: #1e40af;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        /* Job role styles */
+        .key-role {
+            border-left: 4px solid #3b82f6;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+        
+        .role-title {
+            font-weight: 600;
+            font-size: 18px;
+            color: #1e40af;
+            margin-bottom: 5px;
+        }
+        
+        .role-subtitle {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        /* iTabs styling */
+        .enhanced-link-container {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .enhanced-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            padding-right: 20px;
+        }
+        
+        .i-indicator {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 50%;
+            font-size: 10px;
+            font-style: italic;
+            font-weight: bold;
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .i-indicator:hover {
+            transform: scale(1.1);
+        }
+        
+        .i-popup {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: 0;
+            width: 350px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+            z-index: 100;
+            overflow: hidden;
+        }
+        
+        .tab-container {
+            display: flex;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .tab {
+            padding: 12px 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 500;
+            color: #4b5563;
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab:hover {
+            background-color: #edf2f7;
+        }
+        
+        .tab.active {
+            background-color: white;
+            color: #2563eb;
+            border-bottom: 2px solid #2563eb;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            font-size: 14px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Lists in tabs */
+        .tab-content ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .tab-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Apply button */
+        .details-button {
+            display: block;
+            background-color: #2563eb;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+        
+        .details-button:hover {
+            background-color: #1d4ed8;
+        }
+        
+        /* Stats */
+        .stats-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 22px;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #4b5563;
+        }
+        
+        /* Call to action */
+        .cta-box {
+            background-color: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .cta-title {
+            font-weight: 600;
+            color: #0369a1;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer styles */
+        .article-footer {
+            border-top: 1px solid #e5e7eb;
+            margin-top: 30px;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div class="article-container">
+        <div class="article-header">
+            <h1>Critical Skills Shortage in Mining: Australia Needs 40,000 Workers by 2026</h1>
+            <div class="article-meta">Posted on May 11, 2025 | Mining Industry News</div>
+        </div>
+        
+        <div class="article-content">
+            <p>Australia's mining industry is facing an unprecedented skills shortage that threatens to derail major projects and limit production capacity. According to the latest Australian Resources and Energy Employment Forecast, the sector will need to find an additional 40,000 workers by 2026 to meet demand from existing operations and new projects.</p>
+            
+            <p>"We're experiencing a perfect storm of factors creating this shortage," explains Richard Henderson, Chief Executive of the Australian Mining Council. "The combination of an aging workforce, increased competition from other sectors, and the rapid expansion of critical minerals projects has created a significant gap between labor supply and demand."</p>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">40,000+</div>
+                    <div class="stat-label">Workers Needed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15%</div>
+                    <div class="stat-label">Wage Growth</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$108B</div>
+                    <div class="stat-label">New Projects</div>
+                </div>
+            </div>
+            
+            <h2>Most Critical Roles in Demand</h2>
+            
+            <p>While the industry needs workers across all disciplines, several specialized roles face particularly acute shortages. Mining companies are implementing aggressive recruitment strategies and offering substantial incentives to attract qualified candidates in these areas.</p>
+            
+            <div class="key-role">
+                <div class="role-title">Heavy Diesel Mechanics</div>
+                <div class="role-subtitle">Maintenance of mining equipment and fleet vehicles</div>
+                <p>With the increasing size and sophistication of mining equipment, qualified <span class="enhanced-link-container"><a href="#" class="enhanced-link">heavy diesel mechanics</a><span class="i-indicator" onclick="togglePopup('diesel-popup')">i</span></span> are in unprecedented demand. These specialists maintain and repair the enormous haul trucks, excavators, and other equipment essential to mining operations.</p>
+                
+                <!-- Info Popup for Heavy Diesel Mechanics -->
+                <div class="i-popup" id="diesel-popup">
+                    <div class="tab-container">
+                        <div class="tab active" onclick="switchTab(event, 'diesel-overview')">Overview</div>
+                        <div class="tab" onclick="switchTab(event, 'diesel-qualifications')">Qualifications</div>
+                        <div class="tab" onclick="switchTab(event, 'diesel-compensation')">Compensation</div>
+                        <div class="tab" onclick="switchTab(event, 'diesel-employers')">Top Employers</div>
+                    </div>
+                    
+                    <div id="diesel-overview" class="tab-content active">
+                        <h3>Heavy Diesel Mechanics in Mining</h3>
+                        
+                        <p>Heavy diesel mechanics in the mining sector are responsible for maintaining, troubleshooting, and repairing complex mining equipment powered by diesel engines. This role is critical to maintaining operational efficiency and preventing costly downtime.</p>
+                        
+                        <p><strong>Key Responsibilities:</strong></p>
+                        <ul>
+                            <li>Perform preventative maintenance on heavy equipment</li>
+                            <li>Diagnose and repair mechanical issues</li>
+                            <li>Rebuild engines, transmissions, and hydraulic systems</li>
+                            <li>Use diagnostic software and equipment</li>
+                            <li>Complete detailed maintenance records</li>
+                            <li>Adhere to safety protocols and procedures</li>
+                        </ul>
+                        
+                        <p><strong>Work Environment:</strong> Generally based at mine sites in remote locations, often working on a fly-in-fly-out (FIFO) roster. Work may involve shift work including nights and weekends in all weather conditions.</p>
+                        
+                        <a href="#" class="details-button">View Current Openings</a>
+                    </div>
+                    
+                    <div id="diesel-qualifications" class="tab-content">
+                        <h3>Required Qualifications</h3>
+                        
+                        <p><strong>Essential Qualifications:</strong></p>
+                        <ul>
+                            <li>Certificate III in Heavy Commercial Vehicle Mechanical Technology or equivalent</li>
+                            <li>Certificate III in Mobile Plant Technology</li>
+                            <li>Trade certification as a Heavy Diesel Mechanic</li>
+                            <li>Valid driver's license</li>
+                            <li>Experience with CAT, Komatsu, or Liebherr equipment</li>
+                        </ul>
+                        
+                        <p><strong>Desirable Skills:</strong></p>
+                        <ul>
+                            <li>Experience with autonomous equipment</li>
+                            <li>Electrical/electronic diagnostic experience</li>
+                            <li>High-voltage systems training</li>
+                            <li>Working knowledge of hydraulic systems</li>
+                            <li>Experience with predictive maintenance systems</li>
+                        </ul>
+                        
+                        <p><strong>Physical Requirements:</strong> The role requires good physical fitness, as mechanics often need to lift heavy parts, work in confined spaces, and maintain awkward positions for extended periods.</p>
+                    </div>
+                    
+                    <div id="diesel-compensation" class="tab-content">
+                        <h3>Compensation & Benefits</h3>
+                        
+                        <p><strong>Average Salary Range:</strong></p>
+                        <ul>
+                            <li>Entry Level: $95,000 - $110,000 AUD</li>
+                            <li>Experienced (3-5 years): $120,000 - $150,000 AUD</li>
+                            <li>Senior (5+ years): $150,000 - $180,000 AUD</li>
+                            <li>Specialized/Leadership: $180,000+ AUD</li>
+                        </ul>
+                        
+                        <p><strong>Common Benefits:</strong></p>
+                        <ul>
+                            <li>FIFO travel arrangements and accommodation</li>
+                            <li>Meal allowances or provided meals</li>
+                            <li>Completion bonuses</li>
+                            <li>Overtime opportunities</li>
+                            <li>Training and certification support</li>
+                            <li>Superannuation contributions above statutory minimum</li>
+                            <li>Health insurance packages</li>
+                            <li>Employee share plans (at larger companies)</li>
+                        </ul>
+                        
+                        <p><strong>Career Progression:</strong> With experience, heavy diesel mechanics can advance to specialist roles, team leadership positions, or move into planning and management roles within maintenance departments.</p>
+                    </div>
+                    
+                    <div id="diesel-employers" class="tab-content">
+                        <h3>Top Employers</h3>
+                        
+                        <p><strong>Major Mining Companies:</strong></p>
+                        <ul>
+                            <li>BHP - Multiple sites across Australia</li>
+                            <li>Rio Tinto - Primarily Western Australia</li>
+                            <li>Fortescue Metals Group - Pilbara region</li>
+                            <li>Newmont - Sites in Western Australia and Queensland</li>
+                            <li>Glencore - Queensland and New South Wales operations</li>
+                        </ul>
+                        
+                        <p><strong>Mining Contractors:</strong></p>
+                        <ul>
+                            <li>Thiess</li>
+                            <li>Downer Group</li>
+                            <li>Macmahon Holdings</li>
+                            <li>MACA</li>
+                            <li>NRW Holdings</li>
+                        </ul>
+                        
+                        <p><strong>Equipment Dealers:</strong></p>
+                        <ul>
+                            <li>Hastings Deering (CAT dealer)</li>
+                            <li>WesTrac</li>
+                            <li>Komatsu Australia</li>
+                            <li>Liebherr Australia</li>
+                        </ul>
+                        
+                        <a href="#" class="details-button">Compare Employer Benefits</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-role">
+                <div class="role-title">Mining Engineers</div>
+                <div class="role-subtitle">Design and planning of mining operations</div>
+                <p>Mining engineers are central to planning and executing efficient, safe, and profitable extraction activities. The growing complexity of projects, especially those involving automation and deeper ore bodies, has increased demand for these specialists substantially.</p>
+            </div>
+            
+            <div class="key-role">
+                <div class="role-title">Process Engineers</div>
+                <div class="role-subtitle">Optimization of mineral processing systems</div>
+                <p>As ore grades decline and processing becomes more complex, skilled <span class="enhanced-link-container"><a href="#" class="enhanced-link">process engineers</a><span class="i-indicator" onclick="togglePopup('process-popup')">i</span></span> have become essential to maintaining profitable operations. These professionals optimize the systems that convert raw ore into marketable products.</p>
+                
+                <!-- Info Popup for Process Engineers -->
+                <div class="i-popup" id="process-popup">
+                    <div class="tab-container">
+                        <div class="tab active" onclick="switchTab(event, 'process-overview')">Overview</div>
+                        <div class="tab" onclick="switchTab(event, 'process-skills')">Skills</div>
+                        <div class="tab" onclick="switchTab(event, 'process-demand')">Market Demand</div>
+                        <div class="tab" onclick="switchTab(event, 'process-education')">Education</div>
+                    </div>
+                    
+                    <div id="process-overview" class="tab-content active">
+                        <h3>Process Engineers in Mining</h3>
+                        
+                        <p>Process engineers in mining design, implement, and optimize the systems that transform raw ore into refined minerals and metals. They work with complex chemical and physical processes to maximize efficiency, yield, and product quality while minimizing costs and environmental impact.</p>
+                        
+                        <p><strong>Key Responsibilities:</strong></p>
+                        <ul>
+                            <li>Design mineral processing circuits and systems</li>
+                            <li>Optimize crushing, grinding, and separation processes</li>
+                            <li>Monitor and improve metallurgical recovery rates</li>
+                            <li>Troubleshoot processing plant issues</li>
+                            <li>Implement process control systems and automation</li>
+                            <li>Manage water and energy consumption</li>
+                            <li>Ensure environmental compliance</li>
+                        </ul>
+                        
+                        <p><strong>Work Environment:</strong> Process engineers typically divide their time between processing plants and offices. They may work standard business hours or on shift schedules depending on the operation.</p>
+                        
+                        <a href="#" class="details-button">View Current Openings</a>
+                    </div>
+                    
+                    <div id="process-skills" class="tab-content">
+                        <h3>Essential Skills & Expertise</h3>
+                        
+                        <p><strong>Technical Skills:</strong></p>
+                        <ul>
+                            <li>Mineral processing principles and techniques</li>
+                            <li>Process control and automation systems</li>
+                            <li>Metallurgical testing and analysis</li>
+                            <li>Grinding and comminution technology</li>
+                            <li>Hydrometallurgy and/or pyrometallurgy</li>
+                            <li>Chemical engineering fundamentals</li>
+                            <li>Simulation and modeling software</li>
+                            <li>Water treatment and management</li>
+                        </ul>
+                        
+                        <p><strong>Software Proficiency:</strong></p>
+                        <ul>
+                            <li>Metallurgical accounting software</li>
+                            <li>Process simulation tools (e.g., METSIM, JKSimMet)</li>
+                            <li>SCADA and DCS systems</li>
+                            <li>Statistical analysis software</li>
+                            <li>CAD software</li>
+                        </ul>
+                        
+                        <p><strong>Soft Skills:</strong></p>
+                        <ul>
+                            <li>Problem-solving and analytical thinking</li>
+                            <li>Project management</li>
+                            <li>Communication across technical and non-technical teams</li>
+                            <li>Adaptability and continuous learning</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="process-demand" class="tab-content">
+                        <h3>Current Market Demand</h3>
+                        
+                        <p>Process engineers are experiencing unprecedented demand in the Australian mining sector, with companies competing intensely for experienced professionals.</p>
+                        
+                        <p><strong>Market Statistics:</strong></p>
+                        <ul>
+                            <li>Average of 15-20 open positions per qualified candidate</li>
+                            <li>Salary premium of 20-25% over 2022 rates</li>
+                            <li>Projected 35% increase in demand over next 5 years</li>
+                            <li>Critical shortage in lithium and rare earths processing expertise</li>
+                        </ul>
+                        
+                        <p><strong>Growth Areas:</strong></p>
+                        <ul>
+                            <li>Battery minerals processing (lithium, nickel, cobalt)</li>
+                            <li>Critical minerals processing</li>
+                            <li>Low-grade ore processing optimization</li>
+                            <li>Energy-efficient processing methods</li>
+                            <li>Water recycling and dry processing technologies</li>
+                        </ul>
+                        
+                        <p><strong>Regional Demand:</strong> Western Australia leads demand, particularly in the lithium sector, followed by Queensland for base metals and New South Wales for gold processing expertise.</p>
+                    </div>
+                    
+                    <div id="process-education" class="tab-content">
+                        <h3>Education & Certification</h3>
+                        
+                        <p><strong>Degree Programs:</strong></p>
+                        <ul>
+                            <li>Bachelor of Engineering (Metallurgical)</li>
+                            <li>Bachelor of Engineering (Chemical)</li>
+                            <li>Bachelor of Engineering (Minerals Processing)</li>
+                            <li>Master of Metallurgical Engineering</li>
+                            <li>Master of Minerals Processing</li>
+                        </ul>
+                        
+                        <p><strong>Key Universities:</strong></p>
+                        <ul>
+                            <li>Curtin University - Western Australian School of Mines</li>
+                            <li>University of Queensland - Sustainable Minerals Institute</li>
+                            <li>Murdoch University - Extractive Metallurgy</li>
+                            <li>University of Adelaide - Chemical Engineering</li>
+                            <li>University of Newcastle - Chemical Engineering</li>
+                        </ul>
+                        
+                        <p><strong>Professional Development:</strong></p>
+                        <ul>
+                            <li>Australasian Institute of Mining and Metallurgy (AusIMM) certification</li>
+                            <li>Chartered Professional Engineer (CPEng) status</li>
+                            <li>Specialized short courses in new processing technologies</li>
+                            <li>Company-sponsored upskilling programs</li>
+                        </ul>
+                        
+                        <a href="#" class="details-button">Explore Training Programs</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-role">
+                <div class="role-title">Automation Specialists</div>
+                <div class="role-subtitle">Implementation and maintenance of autonomous systems</div>
+                <p>As mining operations increasingly adopt autonomous vehicles and remote operations, specialists who can implement, maintain, and troubleshoot these systems are in high demand. This relatively new role combines IT, engineering, and operational expertise.</p>
+            </div>
+            
+            <div class="key-role">
+                <div class="role-title">Environmental Scientists</div>
+                <div class="role-subtitle">Environmental compliance and rehabilitation</div>
+                <p>With increased regulatory requirements and corporate sustainability commitments, environmental scientists play a crucial role in ensuring mining operations meet their environmental obligations and successfully rehabilitate sites.</p>
+            </div>
+            
+            <h2>Industry Response to the Shortage</h2>
+            
+            <p>Mining companies are implementing various strategies to address the critical skills shortage:</p>
+            
+            <ul>
+                <li><strong>Increased Compensation:</strong> Salaries for critical roles have risen by 15-20% in the past 18 months</li>
+                <li><strong>Enhanced Benefits:</strong> Improved FIFO schedules, family-friendly rosters, and expanded benefits packages</li>
+                <li><strong>Training Initiatives:</strong> Programs to accelerate skills development for entry-level workers</li>
+                <li><strong>Diversity Efforts:</strong> Targeted recruitment of women and Indigenous Australians</li>
+                <li><strong>International Recruitment:</strong> Campaigns to attract skilled workers from overseas</li>
+                <li><strong>Automation Investment:</strong> Accelerating automation to reduce labor requirements</li>
+            </ul>
+            
+            <div class="cta-box">
+                <p class="cta-title">Mining Career Opportunities</p>
+                <p>With record demand for skilled workers, now is an excellent time to consider a career in the mining industry. Companies are offering competitive salaries, comprehensive training, and clear pathways for advancement.</p>
+                <p>For those with relevant skills or a willingness to train, the industry offers long-term career prospects with above-average compensation and unique work environments.</p>
+                <a href="#" class="details-button">Explore Mining Careers</a>
+            </div>
+            
+            <div class="article-footer">
+                <p>This article was prepared with information from the Australian Resources and Energy Employer Association, the Minerals Council of Australia, and interviews with industry recruitment specialists.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Function to toggle popup visibility
+        function togglePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            
+            // Close all other popups first
+            const allPopups = document.querySelectorAll('.i-popup');
+            allPopups.forEach(p => {
+                if (p.id !== popupId) {
+                    p.style.display = 'none';
+                }
+            });
+            
+            // Toggle the selected popup
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+            }
+        }
+        
+        // Function to switch tabs
+        function switchTab(event, tabId) {
+            // Get the parent popup
+            const popup = event.currentTarget.closest('.i-popup');
+            
+            // Hide all tab contents in this popup
+            const tabContents = popup.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs in this popup
+            const tabs = popup.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show the selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to the clicked tab
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Close popups when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.i-popup') && !event.target.classList.contains('i-indicator')) {
+                const popups = document.querySelectorAll('.i-popup');
+                popups.forEach(popup => {
+                    popup.style.display = 'none';
+                });
+            }
+        });
+<script>
+    // Enhanced popup functionality with animations and additional features
+    
+    // Track which popup is currently open
+    let currentOpenPopup = null;
+    
+    // Function to toggle popup visibility with animation
+    function togglePopup(popupId) {
+        const popup = document.getElementById(popupId);
+        
+        // Close all other popups first
+        const allPopups = document.querySelectorAll('.i-popup');
+        allPopups.forEach(p => {
+            if (p.id !== popupId) {
+                closePopupWithAnimation(p);
+            }
+        });
+        
+        // Toggle the selected popup
+        if (popup.style.display === 'block') {
+            closePopupWithAnimation(popup);
+            currentOpenPopup = null;
+        } else {
+            openPopupWithAnimation(popup);
+            currentOpenPopup = popup;
+            
+            // Start auto-rotation for tabs
+            if (popup.hasAttribute('data-auto-rotate') && 
+                popup.getAttribute('data-auto-rotate') === 'true') {
+                startTabRotation(popup);
+            }
+        }
+        
+        // Prevent event from bubbling up to document
+        event.stopPropagation();
+    }
+    
+    // Open popup with animation
+    function openPopupWithAnimation(popup) {
+        // First set display to block but with 0 opacity
+        popup.style.display = 'block';
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateY(-10px)';
+        
+        // Force a reflow to ensure the initial state is applied
+        void popup.offsetWidth;
+        
+        // Then fade in with animation
+        popup.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        popup.style.opacity = '1';
+        popup.style.transform = 'translateY(0)';
+    }
+    
+    // Close popup with animation
+    function closePopupWithAnimation(popup) {
+        popup.style.opacity = '0';
+        popup.style.transform = 'translateY(-10px)';
+        
+        // After animation completes, hide the element
+        setTimeout(() => {
+            popup.style.display = 'none';
+            // Reset the transform for next time
+            popup.style.transform = '';
+        }, 300);
+    }
+    
+    // Function to switch tabs with animation
+    function switchTab(event, tabId) {
+        // Get the parent popup
+        const popup = event.currentTarget.closest('.i-popup');
+        
+        // Stop auto-rotation when user clicks a tab
+        stopTabRotation(popup);
+        
+        // Find the tab content to activate
+        const targetContent = document.getElementById(tabId);
+        
+        // If already active, do nothing
+        if (targetContent.classList.contains('active')) {
+            return;
+        }
+        
+        // Get currently active tab content
+        const activeContent = popup.querySelector('.tab-content.active');
+        
+        // Animate out the current content
+        if (activeContent) {
+            activeContent.style.opacity = '1';
+            activeContent.style.transition = 'opacity 0.2s ease';
+            activeContent.style.opacity = '0';
+            
+            setTimeout(() => {
+                activeContent.classList.remove('active');
+                activeContent.style.opacity = '';
+                
+                // Animate in the new content
+                activateNewTab(popup, event.currentTarget, targetContent);
+            }, 200);
+        } else {
+            // No active content, just activate the new tab
+            activateNewTab(popup, event.currentTarget, targetContent);
+        }
+    }
+    
+    // Helper function to activate a new tab
+    function activateNewTab(popup, tabElement, contentElement) {
+        // Remove active class from all tabs in this popup
+        const tabs = popup.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Add active class to the clicked tab
+        tabElement.classList.add('active');
+        
+        // Show the new content with animation
+        contentElement.classList.add('active');
+        contentElement.style.opacity = '0';
+        
+        // Force a reflow for the animation to work
+        void contentElement.offsetWidth;
+        
+        contentElement.style.transition = 'opacity 0.3s ease';
+        contentElement.style.opacity = '1';
+    }
+    
+    // Tab rotation functionality
+    const rotationIntervals = {};
+    
+    function startTabRotation(popup) {
+        // Only start if not already rotating
+        if (rotationIntervals[popup.id]) {
+            return;
+        }
+        
+        const tabsContainer = popup.querySelector('.tab-container');
+        const tabs = tabsContainer.querySelectorAll('.tab');
+        
+        // Only rotate if there's more than one tab
+        if (tabs.length <= 1) {
+            return;
+        }
+        
+        let currentIndex = 0;
+        tabs.forEach((tab, index) => {
+            if (tab.classList.contains('active')) {
+                currentIndex = index;
+            }
+        });
+        
+        rotationIntervals[popup.id] = setInterval(() => {
+            currentIndex = (currentIndex + 1) % tabs.length;
+            const nextTab = tabs[currentIndex];
+            const nextTabId = nextTab.getAttribute('onclick').match(/'([^']+)'/)[1];
+            
+            // Simulate click without stopping rotation
+            const targetContent = document.getElementById(nextTabId);
+            const activeContent = popup.querySelector('.tab-content.active');
+            
+            if (activeContent) {
+                activeContent.style.opacity = '1';
+                activeContent.style.transition = 'opacity 0.2s ease';
+                activeContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    activeContent.classList.remove('active');
+                    activeContent.style.opacity = '';
+                    
+                    // Activate the new tab without stopping rotation
+                    tabs.forEach(t => t.classList.remove('active'));
+                    nextTab.classList.add('active');
+                    
+                    targetContent.classList.add('active');
+                    targetContent.style.opacity = '0';
+                    void targetContent.offsetWidth;
+                    targetContent.style.transition = 'opacity 0.3s ease';
+                    targetContent.style.opacity = '1';
+                }, 200);
+            }
+        }, 4000); // Rotate every 4 seconds
+    }
+    
+    function stopTabRotation(popup) {
+        if (rotationIntervals[popup.id]) {
+            clearInterval(rotationIntervals[popup.id]);
+            delete rotationIntervals[popup.id];
+        }
+    }
+    
+    // Close popups when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.i-popup') && !event.target.classList.contains('i-indicator')) {
+            const popups = document.querySelectorAll('.i-popup');
+            popups.forEach(popup => {
+                if (popup.style.display === 'block') {
+                    closePopupWithAnimation(popup);
+                }
+            });
+            
+            // Clear all rotation intervals
+            Object.keys(rotationIntervals).forEach(key => {
+                clearInterval(rotationIntervals[key]);
+                delete rotationIntervals[key];
+            });
+            
+            currentOpenPopup = null;
+        }
+    });
+    
+    // Add close buttons to popups
+    document.addEventListener('DOMContentLoaded', function() {
+        const popups = document.querySelectorAll('.i-popup');
+        
+        popups.forEach(popup => {
+            // Add close button if it doesn't exist
+            if (!popup.querySelector('.popup-close')) {
+                const closeButton = document.createElement('button');
+                closeButton.className = 'popup-close';
+                closeButton.innerHTML = '×';
+                closeButton.style.position = 'absolute';
+                closeButton.style.top = '10px';
+                closeButton.style.right = '10px';
+                closeButton.style.background = 'none';
+                closeButton.style.border = 'none';
+                closeButton.style.fontSize = '22px';
+                closeButton.style.color = '#666';
+                closeButton.style.cursor = 'pointer';
+                closeButton.style.zIndex = '10';
+                closeButton.style.padding = '5px';
+                closeButton.style.lineHeight = '1';
+                closeButton.style.width = '30px';
+                closeButton.style.height = '30px';
+                closeButton.style.display = 'flex';
+                closeButton.style.alignItems = 'center';
+                closeButton.style.justifyContent = 'center';
+                closeButton.style.borderRadius = '50%';
+                closeButton.style.transition = 'background-color 0.2s';
+                
+                closeButton.addEventListener('mouseover', function() {
+                    this.style.backgroundColor = '#f5f5f5';
+                });
+                
+                closeButton.addEventListener('mouseout', function() {
+                    this.style.backgroundColor = '';
+                });
+                
+                closeButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const parentPopup = this.closest('.i-popup');
+                    closePopupWithAnimation(parentPopup);
+                    stopTabRotation(parentPopup);
+                });
+                
+                popup.style.position = 'relative';
+                popup.insertBefore(closeButton, popup.firstChild);
+            }
+            
+            // Set auto-rotate attribute for popups that should auto-rotate
+            popup.setAttribute('data-auto-rotate', 'true');
+        });
+        
+        // Add hover effect to i-indicators
+        const indicators = document.querySelectorAll('.i-indicator');
+        indicators.forEach(indicator => {
+            indicator.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
+            });
+            
+            indicator.addEventListener('mouseout', function() {
+                this.style.transform = '';
+                this.style.boxShadow = '';
+            });
+        });
+    });
+    
+    // Handle popup position adjustments for viewport constraints
+    function adjustPopupPosition(popup) {
+        // Reset position first
+        popup.style.left = '0';
+        popup.style.right = 'auto';
+        
+        // Get popup dimensions and position
+        const rect = popup.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        
+        // Check if popup extends beyond right edge of viewport
+        if (rect.right > viewportWidth) {
+            popup.style.left = 'auto';
+            popup.style.right = '0';
+        }
+        
+        // Adjust maximum height based on viewport
+        const viewportHeight = window.innerHeight;
+        const maxHeight = viewportHeight - rect.top - 20;
+        
+        if (rect.height > maxHeight) {
+            popup.style.maxHeight = maxHeight + 'px';
+            popup.style.overflowY = 'auto';
+        }
+    }
+    
+    // Listen for window resize to adjust positions
+    window.addEventListener('resize', function() {
+        if (currentOpenPopup) {
+            adjustPopupPosition(currentOpenPopup);
+        }
+    });
+</script>
+
+<style>
+    /* Additional styles for enhanced iTabs */
+    
+    /* Improved i-indicator styling */
+    .i-indicator {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background-color: #2563eb;
+        color: white;
+        border-radius: 50%;
+        font-size: 10px;
+        font-style: italic;
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    /* Prevent text selection on tabs and buttons */
+    .tab, .details-button, .i-indicator, .popup-close {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
+    
+    /* Improved tab transitions */
+    .tab {
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 14px;
+        font-weight: 500;
+        color: #4b5563;
+        flex: 1;
+        text-align: center;
+        position: relative;
+    }
+    
+    /* Add indicator line for active tab */
+    .tab.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #2563eb;
+        transition: transform 0.3s ease;
+        transform-origin: left;
+        animation: tabIndicator 0.3s ease forwards;
+    }
+    
+    @keyframes tabIndicator {
+        from { transform: scaleX(0); }
+        to { transform: scaleX(1); }
+    }
+    
+    /* Improved popup styling */
+    .i-popup {
+        display: none;
+        position: absolute;
+        top: 25px;
+        left: 0;
+        width: 350px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+        z-index: 100;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* Tab content transitions */
+    .tab-content {
+        display: none;
+        padding: 20px;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .tab-content.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    /* Improved buttons with hover effects */
+    .details-button {
+        display: block;
+        background-color: #2563eb;
+        color: white;
+        text-align: center;
+        padding: 10px 15px;
+        border-radius: 6px;
+        text-decoration: none;
+        margin-top: 15px;
+        font-weight: 500;
+        transition: background 0.2s, transform 0.1s;
+    }
+    
+    .details-button:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-1px);
+    }
+    
+    .details-button:active {
+        transform: translateY(0);
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 500px) {
+        .i-popup {
+            width: 300px;
+            max-width: 95vw;
+        }
+        
+        .tab {
+            padding: 10px 8px;
+            font-size: 13px;
+        }
+    }
+</style>
+</body>
+</html>

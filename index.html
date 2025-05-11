@@ -618,320 +618,30 @@
                 });
             }
         });
-<script>
-    // Enhanced popup functionality with animations and additional features
-    
-    // Track which popup is currently open
-    let currentOpenPopup = null;
-    
-    // Function to toggle popup visibility with animation
-    function togglePopup(popupId) {
-        const popup = document.getElementById(popupId);
-        
-        // Close all other popups first
-        const allPopups = document.querySelectorAll('.i-popup');
-        allPopups.forEach(p => {
-            if (p.id !== popupId) {
-                closePopupWithAnimation(p);
-            }
-        });
-        
-        // Toggle the selected popup
-        if (popup.style.display === 'block') {
-            closePopupWithAnimation(popup);
-            currentOpenPopup = null;
-        } else {
-            openPopupWithAnimation(popup);
-            currentOpenPopup = popup;
-            
-            // Start auto-rotation for tabs
-            if (popup.hasAttribute('data-auto-rotate') && 
-                popup.getAttribute('data-auto-rotate') === 'true') {
-                startTabRotation(popup);
-            }
-        }
-        
-        // Prevent event from bubbling up to document
-        event.stopPropagation();
-    }
-    
-    // Open popup with animation
-    function openPopupWithAnimation(popup) {
-        // First set display to block but with 0 opacity
-        popup.style.display = 'block';
-        popup.style.opacity = '0';
-        popup.style.transform = 'translateY(-10px)';
-        
-        // Force a reflow to ensure the initial state is applied
-        void popup.offsetWidth;
-        
-        // Then fade in with animation
-        popup.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        popup.style.opacity = '1';
-        popup.style.transform = 'translateY(0)';
-    }
-    
-    // Close popup with animation
-    function closePopupWithAnimation(popup) {
-        popup.style.opacity = '0';
-        popup.style.transform = 'translateY(-10px)';
-        
-        // After animation completes, hide the element
-        setTimeout(() => {
-            popup.style.display = 'none';
-            // Reset the transform for next time
-            popup.style.transform = '';
-        }, 300);
-    }
-    
-    // Function to switch tabs with animation
-    function switchTab(event, tabId) {
-        // Get the parent popup
-        const popup = event.currentTarget.closest('.i-popup');
-        
-        // Stop auto-rotation when user clicks a tab
-        stopTabRotation(popup);
-        
-        // Find the tab content to activate
-        const targetContent = document.getElementById(tabId);
-        
-        // If already active, do nothing
-        if (targetContent.classList.contains('active')) {
-            return;
-        }
-        
-        // Get currently active tab content
-        const activeContent = popup.querySelector('.tab-content.active');
-        
-        // Animate out the current content
-        if (activeContent) {
-            activeContent.style.opacity = '1';
-            activeContent.style.transition = 'opacity 0.2s ease';
-            activeContent.style.opacity = '0';
-            
-            setTimeout(() => {
-                activeContent.classList.remove('active');
-                activeContent.style.opacity = '';
-                
-                // Animate in the new content
-                activateNewTab(popup, event.currentTarget, targetContent);
-            }, 200);
-        } else {
-            // No active content, just activate the new tab
-            activateNewTab(popup, event.currentTarget, targetContent);
-        }
-    }
-    
-    // Helper function to activate a new tab
-    function activateNewTab(popup, tabElement, contentElement) {
-        // Remove active class from all tabs in this popup
-        const tabs = popup.querySelectorAll('.tab');
-        tabs.forEach(tab => {
-            tab.classList.remove('active');
-        });
-        
-        // Add active class to the clicked tab
-        tabElement.classList.add('active');
-        
-        // Show the new content with animation
-        contentElement.classList.add('active');
-        contentElement.style.opacity = '0';
-        
-        // Force a reflow for the animation to work
-        void contentElement.offsetWidth;
-        
-        contentElement.style.transition = 'opacity 0.3s ease';
-        contentElement.style.opacity = '1';
-    }
-    
-    // Tab rotation functionality
-    const rotationIntervals = {};
-    
-    function startTabRotation(popup) {
-        // Only start if not already rotating
-        if (rotationIntervals[popup.id]) {
-            return;
-        }
-        
-        const tabsContainer = popup.querySelector('.tab-container');
-        const tabs = tabsContainer.querySelectorAll('.tab');
-        
-        // Only rotate if there's more than one tab
-        if (tabs.length <= 1) {
-            return;
-        }
-        
-        let currentIndex = 0;
-        tabs.forEach((tab, index) => {
-            if (tab.classList.contains('active')) {
-                currentIndex = index;
-            }
-        });
-        
-        rotationIntervals[popup.id] = setInterval(() => {
-            currentIndex = (currentIndex + 1) % tabs.length;
-            const nextTab = tabs[currentIndex];
-            const nextTabId = nextTab.getAttribute('onclick').match(/'([^']+)'/)[1];
-            
-            // Simulate click without stopping rotation
-            const targetContent = document.getElementById(nextTabId);
-            const activeContent = popup.querySelector('.tab-content.active');
-            
-            if (activeContent) {
-                activeContent.style.opacity = '1';
-                activeContent.style.transition = 'opacity 0.2s ease';
-                activeContent.style.opacity = '0';
-                
-                setTimeout(() => {
-                    activeContent.classList.remove('active');
-                    activeContent.style.opacity = '';
-                    
-                    // Activate the new tab without stopping rotation
-                    tabs.forEach(t => t.classList.remove('active'));
-                    nextTab.classList.add('active');
-                    
-                    targetContent.classList.add('active');
-                    targetContent.style.opacity = '0';
-                    void targetContent.offsetWidth;
-                    targetContent.style.transition = 'opacity 0.3s ease';
-                    targetContent.style.opacity = '1';
-                }, 200);
-            }
-        }, 4000); // Rotate every 4 seconds
-    }
-    
-    function stopTabRotation(popup) {
-        if (rotationIntervals[popup.id]) {
-            clearInterval(rotationIntervals[popup.id]);
-            delete rotationIntervals[popup.id];
-        }
-    }
-    
-    // Close popups when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!event.target.closest('.i-popup') && !event.target.classList.contains('i-indicator')) {
-            const popups = document.querySelectorAll('.i-popup');
-            popups.forEach(popup => {
-                if (popup.style.display === 'block') {
-                    closePopupWithAnimation(popup);
-                }
-            });
-            
-            // Clear all rotation intervals
-            Object.keys(rotationIntervals).forEach(key => {
-                clearInterval(rotationIntervals[key]);
-                delete rotationIntervals[key];
-            });
-            
-            currentOpenPopup = null;
-        }
-    });
-    
-    // Add close buttons to popups
-    document.addEventListener('DOMContentLoaded', function() {
-        const popups = document.querySelectorAll('.i-popup');
-        
-        popups.forEach(popup => {
-            // Add close button if it doesn't exist
-            if (!popup.querySelector('.popup-close')) {
-                const closeButton = document.createElement('button');
-                closeButton.className = 'popup-close';
-                closeButton.innerHTML = '×';
-                closeButton.style.position = 'absolute';
-                closeButton.style.top = '10px';
-                closeButton.style.right = '10px';
-                closeButton.style.background = 'none';
-                closeButton.style.border = 'none';
-                closeButton.style.fontSize = '22px';
-                closeButton.style.color = '#666';
-                closeButton.style.cursor = 'pointer';
-                closeButton.style.zIndex = '10';
-                closeButton.style.padding = '5px';
-                closeButton.style.lineHeight = '1';
-                closeButton.style.width = '30px';
-                closeButton.style.height = '30px';
-                closeButton.style.display = 'flex';
-                closeButton.style.alignItems = 'center';
-                closeButton.style.justifyContent = 'center';
-                closeButton.style.borderRadius = '50%';
-                closeButton.style.transition = 'background-color 0.2s';
-                
-                closeButton.addEventListener('mouseover', function() {
-                    this.style.backgroundColor = '#f5f5f5';
-                });
-                
-                closeButton.addEventListener('mouseout', function() {
-                    this.style.backgroundColor = '';
-                });
-                
-                closeButton.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parentPopup = this.closest('.i-popup');
-                    closePopupWithAnimation(parentPopup);
-                    stopTabRotation(parentPopup);
-                });
-                
-                popup.style.position = 'relative';
-                popup.insertBefore(closeButton, popup.firstChild);
-            }
-            
-            // Set auto-rotate attribute for popups that should auto-rotate
-            popup.setAttribute('data-auto-rotate', 'true');
-        });
-        
-        // Add hover effect to i-indicators
-        const indicators = document.querySelectorAll('.i-indicator');
-        indicators.forEach(indicator => {
-            indicator.addEventListener('mouseover', function() {
-                this.style.transform = 'scale(1.1)';
-                this.style.boxShadow = '0 2px 5px rgba(0,0,0,0.2)';
-            });
-            
-            indicator.addEventListener('mouseout', function() {
-                this.style.transform = '';
-                this.style.boxShadow = '';
-            });
-        });
-    });
-    
-    // Handle popup position adjustments for viewport constraints
-    function adjustPopupPosition(popup) {
-        // Reset position first
-        popup.style.left = '0';
-        popup.style.right = 'auto';
-        
-        // Get popup dimensions and position
-        const rect = popup.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-        
-        // Check if popup extends beyond right edge of viewport
-        if (rect.right > viewportWidth) {
-            popup.style.left = 'auto';
-            popup.style.right = '0';
-        }
-        
-        // Adjust maximum height based on viewport
-        const viewportHeight = window.innerHeight;
-        const maxHeight = viewportHeight - rect.top - 20;
-        
-        if (rect.height > maxHeight) {
-            popup.style.maxHeight = maxHeight + 'px';
-            popup.style.overflowY = 'auto';
-        }
-    }
-    
-    // Listen for window resize to adjust positions
-    window.addEventListener('resize', function() {
-        if (currentOpenPopup) {
-            adjustPopupPosition(currentOpenPopup);
-        }
-    });
-</script>
-
+    </script>
+<!-- Part 2: Fix popup functionality and enhance the implementation -->
 <style>
-    /* Additional styles for enhanced iTabs */
+    /* Fix for popup visibility and positioning */
+    .i-popup {
+        display: none;
+        position: absolute;
+        top: 25px;
+        left: 0;
+        width: 350px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.2);
+        z-index: 1000; /* Increased z-index to ensure visibility */
+        overflow: hidden;
+    }
     
-    /* Improved i-indicator styling */
+    /* Improve popup positioning relative to the link */
+    .enhanced-link-container {
+        display: inline-block;
+        position: relative;
+    }
+    
+    /* Make sure the i-indicator is properly positioned and visible */
     .i-indicator {
         display: inline-flex;
         align-items: center;
@@ -948,108 +658,70 @@
         top: 0;
         right: 0;
         cursor: pointer;
-        transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        z-index: 100; /* Ensure the indicator is clickable */
     }
     
-    /* Prevent text selection on tabs and buttons */
-    .tab, .details-button, .i-indicator, .popup-close {
-        user-select: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
+    /* Close button for popups */
+    .popup-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        color: #666;
+        cursor: pointer;
+        z-index: 10;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: background-color 0.2s;
     }
     
-    /* Improved tab transitions */
+    .popup-close:hover {
+        background-color: #f5f5f5;
+    }
+    
+    /* Additional styling improvements */
+    .tab-container {
+        display: flex;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #eee;
+    }
+    
     .tab {
         padding: 12px 15px;
         cursor: pointer;
+        background: #f8f9fa;
+        border: none;
+        margin-right: 0;
         transition: all 0.3s;
         font-size: 14px;
         font-weight: 500;
         color: #4b5563;
         flex: 1;
         text-align: center;
-        position: relative;
     }
     
-    /* Add indicator line for active tab */
-    .tab.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background-color: #2563eb;
-        transition: transform 0.3s ease;
-        transform-origin: left;
-        animation: tabIndicator 0.3s ease forwards;
+    .tab:hover {
+        background-color: #edf2f7;
     }
     
-    @keyframes tabIndicator {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
+    .tab.active {
+        background-color: white;
+        color: #2563eb;
+        border-bottom: 2px solid #2563eb;
     }
     
-    /* Improved popup styling */
-    .i-popup {
-        display: none;
-        position: absolute;
-        top: 25px;
-        left: 0;
-        width: 350px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 25px rgba(0,0,0,0.2);
-        z-index: 100;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    /* Tab content transitions */
-    .tab-content {
-        display: none;
-        padding: 20px;
-        font-size: 14px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .tab-content.active {
-        display: block;
-        opacity: 1;
-    }
-    
-    /* Improved buttons with hover effects */
-    .details-button {
-        display: block;
-        background-color: #2563eb;
-        color: white;
-        text-align: center;
-        padding: 10px 15px;
-        border-radius: 6px;
-        text-decoration: none;
-        margin-top: 15px;
-        font-weight: 500;
-        transition: background 0.2s, transform 0.1s;
-    }
-    
-    .details-button:hover {
-        background-color: #1d4ed8;
-        transform: translateY(-1px);
-    }
-    
-    .details-button:active {
-        transform: translateY(0);
-    }
-    
-    /* Mobile optimizations */
-    @media (max-width: 500px) {
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
         .i-popup {
             width: 300px;
-            max-width: 95vw;
+            max-width: 90vw;
         }
         
         .tab {
@@ -1058,5 +730,191 @@
         }
     }
 </style>
+
+<script>
+    // Simplified and fixed JavaScript for iTabs functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('iTabs script loaded'); // Debug message
+        
+        // Add close buttons to all popups
+        const popups = document.querySelectorAll('.i-popup');
+        console.log('Found ' + popups.length + ' popups'); // Debug message
+        
+        popups.forEach(popup => {
+            // Add close button
+            const closeButton = document.createElement('button');
+            closeButton.className = 'popup-close';
+            closeButton.innerHTML = '×';
+            closeButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                popup.style.display = 'none';
+            });
+            
+            // Insert the close button if it doesn't already exist
+            if (!popup.querySelector('.popup-close')) {
+                popup.insertBefore(closeButton, popup.firstChild);
+            }
+        });
+        
+        // Add click handlers to all i-indicators
+        const indicators = document.querySelectorAll('.i-indicator');
+        console.log('Found ' + indicators.length + ' indicators'); // Debug message
+        
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Get the popup ID from the onclick attribute or use data attribute
+                let popupId;
+                if (this.hasAttribute('onclick')) {
+                    const onclickAttr = this.getAttribute('onclick');
+                    const match = onclickAttr.match(/togglePopup\(['"]([^'"]+)['"]\)/);
+                    if (match) {
+                        popupId = match[1];
+                    }
+                } else if (this.dataset.popup) {
+                    popupId = this.dataset.popup;
+                }
+                
+                if (popupId) {
+                    togglePopup(popupId);
+                }
+            });
+        });
+    });
+    
+    // Function to toggle popup visibility
+    function togglePopup(popupId) {
+        console.log('Toggling popup: ' + popupId); // Debug message
+        const popup = document.getElementById(popupId);
+        
+        if (!popup) {
+            console.error('Popup not found: ' + popupId);
+            return;
+        }
+        
+        // Close all other popups
+        const allPopups = document.querySelectorAll('.i-popup');
+        allPopups.forEach(p => {
+            if (p.id !== popupId) {
+                p.style.display = 'none';
+            }
+        });
+        
+        // Toggle the selected popup
+        if (popup.style.display === 'block') {
+            popup.style.display = 'none';
+        } else {
+            popup.style.display = 'block';
+            
+            // Position check to keep popup in viewport
+            setTimeout(function() {
+                const rect = popup.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+                
+                // Check if popup extends beyond right edge
+                if (rect.right > viewportWidth) {
+                    popup.style.left = 'auto';
+                    popup.style.right = '0';
+                }
+            }, 0);
+        }
+    }
+    
+    // Function to switch tabs
+    function switchTab(event, tabId) {
+        console.log('Switching to tab: ' + tabId); // Debug message
+        
+        // Get the parent popup
+        const popup = event.currentTarget.closest('.i-popup');
+        
+        // Hide all tab contents in this popup
+        const tabContents = popup.querySelectorAll('.tab-content');
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+        });
+        
+        // Remove active class from all tabs in this popup
+        const tabs = popup.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        
+        // Show the selected tab content
+        const tabContent = document.getElementById(tabId);
+        if (tabContent) {
+            tabContent.classList.add('active');
+        } else {
+            console.error('Tab content not found: ' + tabId);
+        }
+        
+        // Add active class to the clicked tab
+        event.currentTarget.classList.add('active');
+    }
+    
+    // Close popups when clicking outside
+    document.addEventListener('click', function(event) {
+        // Only close popups if click is outside of any popup or indicator
+        if (!event.target.closest('.i-popup') && 
+            !event.target.classList.contains('i-indicator')) {
+            const popups = document.querySelectorAll('.i-popup');
+            popups.forEach(popup => {
+                popup.style.display = 'none';
+            });
+        }
+    });
+</script>
+
+<!-- Add debugging section (will be hidden in production) -->
+<div id="itabs-debug" style="margin-top: 30px; padding: 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 8px; display: none;">
+    <h3 style="margin-top: 0;">iTabs Debug Information</h3>
+    <div id="debug-output"></div>
+    <button onclick="document.getElementById('itabs-debug').style.display = 'none';" style="margin-top: 10px;">Close</button>
+</div>
+
+<script>
+    // Debug helper function
+    function debugLog(message) {
+        console.log(message);
+        const debugOutput = document.getElementById('debug-output');
+        if (debugOutput) {
+            const line = document.createElement('p');
+            line.style.margin = '5px 0';
+            line.textContent = message;
+            debugOutput.appendChild(line);
+        }
+    }
+    
+    // Show debug panel when a specific key combo is pressed (Shift+Alt+D)
+    document.addEventListener('keydown', function(e) {
+        if (e.shiftKey && e.altKey && e.key === 'D') {
+            document.getElementById('itabs-debug').style.display = 'block';
+        }
+    });
+    
+    // Add additional debugging on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get indicator elements and log their onclick attributes
+        const indicators = document.querySelectorAll('.i-indicator');
+        debugLog('Found ' + indicators.length + ' i-indicators');
+        
+        indicators.forEach((indicator, index) => {
+            const onclick = indicator.getAttribute('onclick');
+            debugLog('Indicator #' + index + ' onclick: ' + onclick);
+            
+            // Test if the onclick function exists
+            if (onclick) {
+                const funcMatch = onclick.match(/togglePopup\(['"](.*)['"]\)/);
+                if (funcMatch && funcMatch[1]) {
+                    const popupId = funcMatch[1];
+                    const popup = document.getElementById(popupId);
+                    debugLog('Popup #' + popupId + ' exists: ' + (popup ? 'Yes' : 'No'));
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
+
